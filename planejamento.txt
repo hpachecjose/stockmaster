@@ -1,0 +1,284 @@
+Leia: O COBOL (Common Business Oriented Language) permanece como a espinha dorsal de muitos sistemas de missão crítica em grandes redes de varejo e indústrias devido à sua estabilidade, eficiência no processamento de alto volume de transações e capacidade de manipulação de arquivos sequenciais. Embora modernizações estejam em curso, esses sistemas legados continuam sendo o "core" que sustenta operações logísticas e comerciais complexas. [ibm](https://www.ibm.com/br-pt/think/topics/cobol)
+### Exemplos de Aplicações em COBOL
+Em ambientes de grande porte, as aplicações de COBOL são geralmente estruturadas para lidar com o ciclo completo de dados, desde a entrada de mercadorias até o faturamento. [youtube](https://www.youtube.com/watch?v=7xgTjbJDgxs)
+- **Gestão e Planejamento Logístico:** Sistemas desenvolvidos em COBOL frequentemente gerenciam centros de distribuição, sendo responsáveis pelo planejamento de vendas, definição de estoque disponível e movimentação logística. [youtube](https://www.youtube.com/watch?v=7xgTjbJDgxs)
+- **Controle de Estoque e Compras:** Programas COBOL realizam o controle rigoroso de entradas e saídas (baixas) de produtos, integrando lógica de validação para impedir retiradas superiores ao saldo disponível e automatizando alertas para estoque mínimo. [youtube](https://www.youtube.com/watch?v=gc9OF1EWPGc)
+- **Sistemas de Vendas e Faturamento:** Grandes redes utilizam essa linguagem para a captação e processamento de pedidos, garantindo que transações de alta frequência sejam processadas com alta performance. [youtube](https://www.youtube.com/watch?v=7xgTjbJDgxs)
+- **Cadeia de Suprimentos:** O COBOL processa algoritmos de gestão de suprimentos que definem lotes de compra e intervalos de pedido para categorias de itens (ex: itens de alto ou baixo custo), otimizando o nível de estoque conforme a necessidade da operação. [pt.scribd](https://pt.scribd.com/document/654802363/Caderno-de-Exercicios)
+### Características da Implementação
+Abaixo, os aspectos fundamentais de como esses sistemas operam no dia a dia dessas empresas:
+| Função do Sistema | Aplicação Prática em COBOL |
+| :--- | :--- |
+| **Controle de Estoque** | Cadastro de produtos e validação de saldos em arquivos sequenciais  [youtube](https://www.youtube.com/watch?v=gc9OF1EWPGc). |
+| **Logística** | Gestão de centros de distribuição e planejamento de disponibilidade  [youtube](https://www.youtube.com/watch?v=7xgTjbJDgxs). |
+| **Vendas** | Processamento de pedidos, faturamento e integração com sistemas de frente de caixa  [youtube](https://www.youtube.com/watch?v=7xgTjbJDgxs). |
+| **Automação** | Geração de alertas automáticos para reabastecimento baseado em estoque mínimo  [youtube](https://www.youtube.com/watch?v=-kJpuRnqIwY). |
+Esses sistemas garantem a robustez necessária para operações que dependem de alta disponibilidade e integridade de dados constantes, mantendo-se relevantes mesmo frente à transição para arquiteturas de microserviços em muitas corporações. [ibm](https://www.ibm.com/br-pt/think/topics/cobol)
+
+Mostrar menos
+10:22
+Claude respondeu: Interessante documento sobre COBOL!
+Interessante documento sobre COBOL! O que você gostaria de fazer com ele? Posso ajudar a:
+
+Resumir ou simplificar o conteúdo para algum público específico
+Expandir algum dos tópicos (ex: integração COBOL com microserviços modernos)
+Criar exercícios ou questionário com base no material
+Transformar em outro formato (apresentação, artigo, etc.)
+Debater aspectos técnicos ou históricos do COBOL
+Qual é o objetivo?
+
+Você disse: Vamos criar um sistema de controle de estoque usando COBOL e outros recursos necessário (Banco de Dados, APIs de comunicação, etc).
+Vamos criar um sistema de controle de estoque usando COBOL e outros recursos necessário (Banco de Dados, APIs de comunicação, etc). O sistema será universal. Ele precisa funcionar apenas como um sistema de controle de estoque que funcione para qualquer tipo de empresa, negócio, que lida com estocagem de produtos. Invente um nome, crie uma arquitetura, defina levantamento de requisitos, sistema de login de usuário, recuperação de senha, admin, etc. Tudo que um sistema normal necessita ter. Porém será apenas para controle de estoque onde vamos geral um executável (o executável certo na situação do COBOL) que será o instalador para funcionar tanto em linux tano em windows. E o que tiver de acrescentar que eu não pensei aqui, informe como sugestão. O Sistem deve ser o mais simples e didático possível e vendável. Fácil de instalar, utilizando todas as boas regras de programação (boas práticas), seguro e confiável.
+
+10:26
+Claude respondeu: StockMaster — Sistema Universal de Controle de Estoque
+StockMaster — Sistema Universal de Controle de Estoque
+Vou arquitetar o sistema completo antes de escrever uma linha de código.
+
+1. Identidade do Produto
+Nome	StockMaster
+Slogan	"Seu estoque, sob controle total."
+Versão inicial	1.0.0
+Público-alvo	PMEs de qualquer segmento que lidam com estocagem
+Modelo de entrega	Instalador único (.sh para Linux, .exe para Windows)
+2. Arquitetura Geral
+┌─────────────────────────────────────────────────────────┐
+│                    STOCKMASTER v1.0                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│   ┌─────────────┐        ┌──────────────────────────┐  │
+│   │  Frontend   │◄──────►│     API Gateway (REST)   │  │
+│   │  (React/    │  HTTP  │     Node.js + Express    │  │
+│   │  Next.js)   │        └──────────┬───────────────┘  │
+│   └─────────────┘                   │                   │
+│                                     │ chamada direta    │
+│   ┌─────────────┐        ┌──────────▼───────────────┐  │
+│   │  CLI/TUI    │◄──────►│    COBOL Core Engine     │  │
+│   │  (Terminal) │  pipe  │  (GnuCOBOL compilado)    │  │
+│   └─────────────┘        └──────────┬───────────────┘  │
+│                                     │                   │
+│                          ┌──────────▼───────────────┐  │
+│                          │    PostgreSQL Database    │  │
+│                          │  (dados + auditoria)     │  │
+│                          └──────────────────────────┘  │
+│                                                         │
+│   ┌─────────────────────────────────────────────────┐  │
+│   │           Serviços de Suporte                   │  │
+│   │  Redis (cache/sessão) │ SMTP (e-mail) │ Logs    │  │
+│   └─────────────────────────────────────────────────┘  │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+Por que essa divisão?
+Camada	Tecnologia	Responsabilidade
+Core Engine	GnuCOBOL	Regras de negócio, cálculos, processamento batch
+API Gateway	Node.js	Autenticação, roteamento, comunicação com frontend
+Frontend	Next.js	Interface web responsiva, relatórios visuais
+CLI/TUI	COBOL + ncurses	Operação em servidores sem GUI
+Banco	PostgreSQL	Persistência, integridade, histórico
+Cache	Redis	Sessões, tokens, performance
+3. Levantamento de Requisitos
+3.1 Requisitos Funcionais
+Gestão de Usuários
+
+RF01 — Cadastro de usuários com nome, e-mail, senha e perfil
+RF02 — Login com e-mail e senha
+RF03 — Recuperação de senha por e-mail (token com validade de 30min)
+RF04 — Perfis: ADMIN, GERENTE, OPERADOR, VISUALIZADOR
+RF05 — Bloqueio automático após 5 tentativas de login falhas
+Gestão de Produtos
+
+RF06 — Cadastro de produtos (código, nome, descrição, unidade, categoria)
+RF07 — Código de barras (EAN-13) ou código interno
+RF08 — Definição de estoque mínimo e máximo por produto
+RF09 — Foto do produto (opcional)
+RF10 — Inativação de produto sem exclusão (soft delete)
+Movimentações de Estoque
+
+RF11 — Entrada de mercadoria (compra, devolução de cliente, ajuste)
+RF12 — Saída de mercadoria (venda, devolução a fornecedor, ajuste, perda)
+RF13 — Transferência entre depósitos/filiais
+RF14 — Inventário periódico com ajuste de saldo
+RF15 — Validação: impossível saída maior que saldo disponível
+Fornecedores
+
+RF16 — Cadastro de fornecedores (razão social, CNPJ/CPF, contato)
+RF17 — Vínculo produto ↔ fornecedor com preço de custo
+Alertas e Relatórios
+
+RF18 — Alerta automático de estoque abaixo do mínimo
+RF19 — Relatório de posição de estoque (atual)
+RF20 — Relatório de movimentações por período
+RF21 — Relatório de produtos sem giro (X dias sem movimentação)
+RF22 — Exportação em PDF e CSV
+Auditoria
+
+RF23 — Log de todas as operações com usuário, data/hora e dado anterior/novo
+RF24 — Impossibilidade de deletar histórico de movimentações
+3.2 Requisitos Não-Funcionais
+Código	Requisito
+RNF01	Suporte a Linux (Debian/Ubuntu/RHEL) e Windows 10+
+RNF02	Instalação via script único (< 5 minutos)
+RNF03	Tempo de resposta < 2s para consultas comuns
+RNF04	Senhas com hash Argon2id (nunca em texto puro)
+RNF05	Comunicação API via HTTPS com TLS 1.3
+RNF06	Backup automático diário do banco
+RNF07	Suporte a multi-depósito (múltiplos locais de estoque)
+RNF08	Interface em Português do Brasil (pt-BR)
+RNF09	Suporte a até 100 usuários simultâneos na versão base
+RNF10	Logs de auditoria com retenção de 5 anos
+4. Modelo de Dados (PostgreSQL)
+sql
+-- Usuários e autenticação
+TABLE usuarios (id, nome, email, senha_hash, perfil, ativo, tentativas_login, bloqueado_ate, criado_em)
+TABLE tokens_recuperacao (id, usuario_id, token_hash, expira_em, usado)
+TABLE sessoes (id, usuario_id, token_hash, ip, expira_em)
+
+-- Produtos e categorias
+TABLE categorias (id, nome, descricao, ativo)
+TABLE produtos (id, codigo, nome, descricao, categoria_id, unidade_medida, estoque_minimo, estoque_maximo, ativo)
+TABLE produto_foto (id, produto_id, caminho_arquivo)
+
+-- Fornecedores
+TABLE fornecedores (id, nome, documento, email, telefone, ativo)
+TABLE produto_fornecedor (produto_id, fornecedor_id, preco_custo, principal)
+
+-- Estoque
+TABLE depositos (id, nome, descricao, ativo)
+TABLE saldo_estoque (produto_id, deposito_id, quantidade_atual) -- atualizado pelo COBOL
+TABLE movimentacoes (id, produto_id, deposito_id, tipo, quantidade, usuario_id, fornecedor_id, observacao, criado_em)
+
+-- Auditoria
+TABLE auditoria_log (id, tabela, operacao, usuario_id, dados_antes, dados_depois, criado_em)
+5. Estrutura de Arquivos do Projeto
+stockmaster/
+├── core/                        ← COBOL
+│   ├── src/
+│   │   ├── STK-MAIN.cob         ← Ponto de entrada
+│   │   ├── STK-AUTH.cob         ← Validação de sessão
+│   │   ├── STK-PRODUTO.cob      ← CRUD de produtos
+│   │   ├── STK-ESTOQUE.cob      ← Movimentações e saldos
+│   │   ├── STK-RELATORIO.cob    ← Geração de relatórios
+│   │   ├── STK-ALERTA.cob       ← Verificação de estoque mínimo
+│   │   └── STK-AUDIT.cob        ← Log de auditoria
+│   ├── copybooks/
+│   │   ├── DB-CONFIG.cpy        ← Config do banco
+│   │   ├── MSG-ERRORS.cpy       ← Mensagens de erro padronizadas
+│   │   └── STRUCTS.cpy          ← Estruturas de dados compartilhadas
+│   └── Makefile
+│
+├── api/                         ← Node.js
+│   ├── src/
+│   │   ├── routes/
+│   │   ├── middlewares/
+│   │   ├── services/
+│   │   └── utils/
+│   ├── package.json
+│   └── .env.example
+│
+├── web/                         ← Next.js
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   └── lib/
+│   └── package.json
+│
+├── database/
+│   ├── migrations/              ← Scripts SQL versionados
+│   └── seeds/                   ← Dados iniciais (admin padrão)
+│
+├── installer/
+│   ├── install.sh               ← Linux
+│   ├── install.ps1              ← Windows (PowerShell)
+│   └── config-template.env
+│
+├── docs/
+│   ├── manual-usuario.pdf
+│   └── manual-instalacao.pdf
+│
+└── docker-compose.yml           ← Para quem preferir Docker
+6. Fluxo de Autenticação
+Usuário digita e-mail + senha
+        │
+        ▼
+API recebe → valida formato
+        │
+        ▼
+Verifica se conta está bloqueada (Redis)
+        │
+        ├── Bloqueada → retorna erro + tempo restante
+        │
+        ▼
+Busca usuário no PostgreSQL
+        │
+        ▼
+Verifica hash Argon2id
+        │
+        ├── Falhou → incrementa tentativas (máx 5) → após 5: bloqueia 30min
+        │
+        ▼
+Gera JWT (15min) + Refresh Token (7 dias) → salva no Redis
+        │
+        ▼
+Retorna tokens ao frontend
+Recuperação de senha:
+
+Usuário informa e-mail
+    → API gera token aleatório de 32 bytes
+    → Salva hash do token no banco (válido 30min)
+    → Envia link por SMTP: https://app/reset?token=XXX
+    → Usuário clica → valida token → redefine senha → token invalidado
+7. Módulos COBOL — Responsabilidades
+STK-MAIN.cob
+  ├── Recebe chamada da API via stdin (JSON)
+  ├── Roteia para módulo correto (CALL dinâmico)
+  └── Retorna resultado via stdout (JSON)
+
+STK-ESTOQUE.cob
+  ├── ENTRADA-MERCADORIA
+  │     ├── Valida produto e depósito
+  │     ├── Atualiza saldo_estoque (soma)
+  │     └── Insere em movimentacoes
+  ├── SAIDA-MERCADORIA
+  │     ├── Valida saldo disponível (impede negativo)
+  │     ├── Atualiza saldo_estoque (subtrai)
+  │     └── Insere em movimentacoes
+  └── VERIFICAR-MINIMO
+        └── Retorna lista de produtos abaixo do mínimo
+
+STK-RELATORIO.cob
+  ├── POSICAO-ATUAL     → saldo atual por produto/depósito
+  ├── MOVIMENTACOES     → entradas/saídas por período
+  └── SEM-GIRO          → produtos sem movimento em N dias
+8. Instalador
+O instalador fará automaticamente:
+
+Verificar pré-requisitos (Node.js, PostgreSQL, GnuCOBOL)
+Instalar dependências faltantes
+Compilar os fontes COBOL (cobc -x)
+Criar banco de dados e rodar migrations
+Criar usuário admin padrão (senha gerada e exibida uma vez)
+Configurar serviço do sistema (systemd no Linux, Windows Service no Windows)
+Gerar certificado TLS autoassinado (ou aceitar caminho de certificado externo)
+Exibir URL de acesso ao final
+9. Sugestões que Você Não Mencionou ✅
+Sugestão	Justificativa
+Multi-depósito	Empresas com filiais ou galpões separados precisam de visibilidade por local
+Importação via CSV	Onboarding rápido: cliente importa catálogo de produtos existente
+API pública documentada (Swagger)	Permite integração com ERPs, e-commerce, PDV externos
+Modo offline com sync	COBOL processa localmente, sincroniza com servidor quando há conexão
+Validade de produtos	Para alimentos, medicamentos, cosméticos — controle de lote e vencimento
+Dashboard de KPIs	Giro de estoque, cobertura de dias, valor total em estoque
+Notificação por e-mail e WhatsApp	Alertas de estoque mínimo enviados ao responsável
+Backup automático	Script agendado (cron/Task Scheduler) exporta dump diário criptografado
+Modo multi-tenant	Uma instalação serve múltiplas empresas (modelo SaaS futuro)
+Auditoria imutável	Log de auditoria com hash encadeado — qualquer adulteração é detectável
+10. Roadmap de Desenvolvimento
+Sprint	Entregável	Duração
+1	Banco de dados + migrations + seed inicial	1 semana
+2	Core COBOL: movimentações e saldos	2 semanas
+3	API Node.js: autenticação + endpoints base	1 semana
+4	Core COBOL: relatórios e alertas	1 semana
+5	Frontend Next.js: telas principais	2 semanas
+6	Instalador Linux + Windows	1 semana
+7	Testes, documentação, ajustes finais	1 semana
+Total	MVP completo	~9 semanas
